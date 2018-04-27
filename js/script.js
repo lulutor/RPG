@@ -22,9 +22,7 @@ class Sorcier extends Personnage {
     this.ultime = ultime
   }
    utiliserUltime(cible){
-     this.pv<500{
-       this.dmg = this.ultime
-     }
+     if(this.pv<500){ this.dmg = this.ultime }
  }
 }
 const Kassadin = new Sorcier("Kassadin", 1500, 200, 300, 50, 200, 350)
