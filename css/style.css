@@ -1,21 +1,38 @@
-body{
-  margin:auto,0;
+html, body{
+   margin: 0px;
+   padding: 0px;
+   outline: 0px;
+   height: 100%;
+   background-color: yellow;
 }
+
+#page{
+   background-color: red;
+   height: 100%;
+   width: 100%;
+}
+
 
 .grid{
-  display:grid;
-  grid-template-columns: 40% 20% 40%;
-
-
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  height:100%;
 }
+
+.block_game{
+  flex-grow: 2;
+  text-align: center;
+}
+
+.block_vs {
+  flex-grow: 1;
+}
+
 
 .charactere{
   text-align:center;
 }
-
-
-
-
 
 
 li{
