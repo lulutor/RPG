@@ -7,7 +7,6 @@ class  Personnage {
     this.dmg = dmg;
     this.power = power;
     this.ar = ar;
-    this.mr = mr;
   }
   attaquer(cible){
     let degat = this.dmg - cible.ar;
@@ -17,7 +16,7 @@ class  Personnage {
 }
 
 class Sorcier extends Personnage {
-  constructor( nom, pv, dmg, power, ar, mr, ultime ){
+  constructor( nom, pv, dmg, power, ar, ultime ){
     super(nom, pv, dmg, power, ar, mr,)
     this.ultime = ultime
   }
@@ -25,7 +24,7 @@ class Sorcier extends Personnage {
      if(this.pv<500){ this.dmg = this.ultime }
  }
 }
-const Kassadin = new Sorcier("Kassadin", 1500, 200, 300, 50, 200, 350)
+const Kassadin = new Sorcier("Kassadin", 1500, 200, 300, 50,  350)
 const Olaf = new Personnage("Olaf", 1500, 400, 0, 100, 50)
 
 Olaf.attaquer(Kassadin)

@@ -76,13 +76,15 @@ li{
   flex-grow: 1;
   border: 2px solid blue;
   margin:20px;
+  text-align: center;
 }
 
 /*********************BLOCK STAT*******************************************************/
 
-.block_stat {
+.block_stat_action {
   text-align: justify;
   font-size: 50px;
+  border: 2px solid blue;
 }
 
 
