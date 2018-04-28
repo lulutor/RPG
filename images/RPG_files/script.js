@@ -27,5 +27,3 @@ class Sorcier extends Personnage {
 }
 const Kassadin = new Sorcier("Kassadin", 1500, 200, 300, 50, 200, 350)
 const Olaf = new Personnage("Olaf", 1500, 400, 0, 100, 50)
-
-Olaf.attaquer(Kassadin)
