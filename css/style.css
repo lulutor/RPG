@@ -22,7 +22,7 @@ li{
 
 }
 
-/*******************STAT************************/
+/*******************STAT AND ATTCK************************/
 
 .block_stat{
   flex-grow: 1;
@@ -30,6 +30,17 @@ li{
   margin: 10px;
   text-align: left;
 }
+
+.attack{
+  width:75px;
+  height:75px;
+  background-image: url("../images/attack.png");
+  background-size: contain;
+  margin: 5px;
+  border: 2px solid green;
+}
+
+
 
 
 
@@ -46,15 +57,25 @@ li{
   text-align:center;
 }
 
+.img_charactere{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
 
 .img_wizard{
   height:510px;
-  width:275px;;
+  width:275px;
+  background-image: url("../images/wizard.png");
+  margin-left: 80px;
 }
 
 .img_warriors{
   height:535px;
-  width:400px;px;
+  width:400px;
+  background-image: url("../images/warriors.png");
+  margin-left: 60px;
 }
 
 .block_item_choose>ul{
@@ -73,7 +94,7 @@ li{
 
 
 .block_vs {
-  flex-grow: 1;
+  flex-grow: 0.2;
   border: 2px solid blue;
   margin:20px;
   text-align: center;
@@ -85,6 +106,7 @@ li{
   text-align: justify;
   font-size: 50px;
   border: 2px solid blue;
+
 }
 
 
@@ -100,6 +122,7 @@ li{
 .set_inventary{
   width:100px;
   height:100px;
+  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   border: 2px solid blue;
