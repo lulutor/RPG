@@ -1,8 +1,8 @@
 'use strict'
 
 // CLASS PERSONNAGE *****************************************************************
-class  Personnage {
-  constructor( nom, pv, force, magie, damage, armure, esquive, mana, ultime ){
+class Personnage {
+  constructor(nom, pv, force, magie, damage, armure, esquive, mana, ultime) {
     this.nom = nom,
     this.pv = pv,
     this.force = force,
@@ -11,7 +11,7 @@ class  Personnage {
     this.armure = armure,
     this.esquive = esquive,
     this.mana = mana,
-    this.ultime= ultime
+    this.ultime = ultime
   }
   objectSword() {
     this.damage += this.force
@@ -25,10 +25,10 @@ class  Personnage {
   objectShield() {
     this.armure += 50
   }
-  objectBluePotion(){
-    this.mana =+ 200
+  objectBluePotion() {
+    this.mana = +200
   }
-  objectboots(cible){
+  objectBoots(cible) {
     this.esquive = 0.25
   }
 }
@@ -36,24 +36,25 @@ class  Personnage {
 
 // SOUS CLASS MAGE ******************************************************************
 class Mage extends Personnage {
-  constructor( nom, pv, force, magie, damage, armure, esquive, mana, ultime ){
+  constructor(nom, pv, force, magie, damage, armure, esquive, mana, ultime) {
     super(nom, pv, force, magie, damage, armure, esquive, mana, ultime)
   }
-  attaquer(cible){
+  attaquer(cible) {
     let degat = this.damage - cible.armure;
-    if(degat<0){
+    if (degat < 0) {
       degat = 0;
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
-    }else if(Math.random()*1<=cible.esquive){
+    } else if (Math.random() * 1 < cible.esquive) {
       console.log(`${cible.nom} à esquivé ${degat} de dégats de ${this.nom}`)
       document.querySelector(".action_warriors").textContent = "esquive!";
-    }else{
+    } else {
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
       cible.pv = cible.pv - degat
+      document.querySelector(".action_warriors").textContent = `-${degat}`;
       document.querySelector("#pv_guerrier").textContent = cible.pv;
     }
   }
-  afficherStatMage(){
+  afficherStatMage() {
     document.querySelector(".force_mage").textContent = ` ${this.force}`
     document.querySelector(".magie_mage").textContent = ` ${this.magie}`
     document.querySelector(".degats_mage").textContent = ` ${this.damage}`
@@ -67,134 +68,224 @@ class Mage extends Personnage {
 
 // SOUS CLASS GUERRIER **************************************************************
 class Guerrier extends Personnage {
-  constructor( nom, pv, force, magie, damage, armure, esquive, mana, ultime ){
+  constructor(nom, pv, force, magie, damage, armure, esquive, mana, ultime) {
     super(nom, pv, force, magie, damage, armure, esquive, mana, ultime)
   }
-  attaquer(cible){
+  attaquer(cible) {
     let degat = this.damage - cible.armure;
-    console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
-    cible.pv = cible.pv - degat
-    document.querySelector("#pv_mage").textContent = Syndra.pv;
+    if (degat < 0) {
+      degat = 0;
+      console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+    } else if (Math.random() * 1 <= cible.esquive) {
+      console.log(`${cible.nom} à esquivé ${degat} de dégats de ${this.nom}`)
+      document.querySelector(".action_mage").textContent = "esquive!";
+    } else {
+      console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+      cible.pv = cible.pv - degat
+      document.querySelector(".action_mage").textContent = `-${degat}`;
+      document.querySelector("#pv_mage").textContent = cible.pv;
+    }
   }
   afficherStatWarriors() {
-    document.querySelector(".force_warriors").textContent = ` ${this.force}`
-    document.querySelector(".magie_warriors").textContent = ` ${this.magie}`
-    document.querySelector(".damage_warriors").textContent = ` ${this.damage}`
-    document.querySelector(".armure_warriors").textContent = ` ${this.armure}`
-    document.querySelector(".esquive_warriors").textContent = ` ${this.esquive}`
-    document.querySelector(".mana_warriors").textContent = ` ${this.mana}`
+    document.querySelector(".force_guerrier").textContent = ` ${this.force}`
+    document.querySelector(".magie_guerrier").textContent = ` ${this.magie}`
+    document.querySelector(".degats_guerrier").textContent = ` ${this.damage}`
+    document.querySelector(".armure_guerrier").textContent = ` ${this.armure}`
+    document.querySelector(".esquive_guerrier").textContent = ` ${this.esquive}`
+    document.querySelector(".mana_guerrier").textContent = ` ${this.mana}`
     document.querySelector("#pv_guerrier").textContent = ` ${this.pv}`
   }
 }
 
 // DECLARATION DES HEROS EN VARIABLES QUI CORRESPOND A UNE CLASS MAGE ET GUERRIER ***
 const Syndra = new Mage("Syndra", 1500, 50, 120, 50, 50, 0, 100, 250)
-const Mordekaizer = new Guerrier("Mordekaizer", 1500, 130, 10, 50, 100, 0, 0, 400 )
+const Mordekaizer = new Guerrier("Mordekaizer", 1500, 130, 10, 50, 100, 0, 0, 400)
 
 
 // RESET *******************************************************************************
 
 let reset = document.getElementById("reset");
-reset.addEventListener("click", function(){
-  location.reload() ;
+reset.addEventListener("click", function() {
+  location.reload();
 })
 
 // INVENTAIRE **************************************************************************
 
 // Inventaire du mage--------
 let swordMage = document.querySelector("#sword_mage")
-let scepterMage= document.querySelector("#scepter_mage")
-let redPotionMage= document.querySelector("#red-potion_mage")
-let shieldMage= document.querySelector("#shield_mage")
-let bluePotionMage= document.querySelector("#blue-potion_mage")
-let bootsMage= document.querySelector("#boots_mage")
+let scepterMage = document.querySelector("#scepter_mage")
+let redPotionMage = document.querySelector("#red-potion_mage")
+let shieldMage = document.querySelector("#shield_mage")
+let bluePotionMage = document.querySelector("#blue-potion_mage")
+let bootsMage = document.querySelector("#boots_mage")
 
 
 //Inventaire du warriors----
-let swordWarriors= document.querySelector("#sword_warriors")
-let scepterWarriors= document.querySelector("#scepter_warriors")
-let redPotionWarriors= document.querySelector("#red-potion_warriors")
-let shieldWarriors= document.querySelector("#shield_warriors")
-let bluePotionWarriors= document.querySelector("#blue-potion_warriors")
-let bootsWarriors= document.querySelector("#boots_warriors")
+let swordWarriors = document.querySelector("#sword_warriors")
+let scepterWarriors = document.querySelector("#scepter_warriors")
+let redPotionWarriors = document.querySelector("#red-potion_warriors")
+let shieldWarriors = document.querySelector("#shield_warriors")
+let bluePotionWarriors = document.querySelector("#blue-potion_warriors")
+let bootsWarriors = document.querySelector("#boots_warriors")
 
 //ADDEVENTLISTENER OBJECT MAGE**********************************************************
 
-var oneSwordMage=true
+var oneSwordMage = true
 var oneScepterMage = true
 var oneRedPotionMage = true
 var oneShieldMage = true
 var oneBluePotionMage = true
 var oneBootsMage = true
+var troisObjectsMage = 1;
 
 
 swordMage.addEventListener("click", function() {
-  if(oneSwordMage===true){
-  Syndra.objectSword()
-  Syndra.afficherStatMage()
-  console.log(Syndra.damage)
-  oneSwordMage=false
+  if (oneSwordMage === true && troisObjectsMage<=3) {
+    Syndra.objectSword()
+    Syndra.afficherStatMage()
+    console.log(Syndra.damage)
+    oneSwordMage = false
+    troisObjectsMage ++
   }
- })
+})
 
 
 scepterMage.addEventListener("click", function() {
-  Syndra.objectScepter()
-  console.log(Syndra.damage)
+  if (oneScepterMage === true && troisObjectsMage<=3) {
+    Syndra.objectScepter()
+    Syndra.afficherStatMage()
+    console.log(Syndra.damage)
+    oneScepterMage = false
+    troisObjectsMage ++
+  }
 })
 
 redPotionMage.addEventListener("click", function() {
-  Syndra.objectScepter()
-  console.log(Syndra.damage)
+  if (oneRedPotionMage === true && troisObjectsMage<=3) {
+    Syndra.objectRedPotion()
+    Syndra.afficherStatMage()
+    console.log(Syndra.pv)
+    oneRedPotionMage = false
+    troisObjectsMage ++
+  }
 })
 
 shieldMage.addEventListener("click", function() {
-  Syndra.objectScepter()
-  console.log(Syndra.damage)
+  if (oneShieldMage === true && troisObjectsMage<=3) {
+    Syndra.objectShield()
+    Syndra.afficherStatMage()
+    console.log(Syndra.armure)
+    oneShieldMage = false
+    troisObjectsMage ++
+  }
 })
 
 bluePotionMage.addEventListener("click", function() {
-  Syndra.objectScepter()
-  console.log(Syndra.damage)
+  if (oneBluePotionMage === true && troisObjectsMage<=3) {
+    Syndra.objectBluePotion()
+    Syndra.afficherStatMage()
+    console.log(Syndra.mana)
+    oneBluePotionMage = false
+    troisObjectsMage ++
+  }
 })
 
 bootsMage.addEventListener("click", function() {
-  Syndra.objectScepter()
-  console.log(Syndra.damage)
+  if (oneBootsMage === true && troisObjectsMage<=3) {
+    Syndra.objectBoots()
+    Syndra.afficherStatMage()
+    console.log(Syndra.esquive)
+    oneBootsMage = false
+    troisObjectsMage ++
+  }
 })
 
 //ADDEVENTLISTENER OBEJECT WARRIORS****************************************************
 
+var oneSwordWarriors = true
+var oneScepterWarriors = true
+var oneRedPotionWarriors = true
+var oneShieldWarriors = true
+var oneBluePotionWarriors = true
+var oneBootsWarriors = true
+var troisObjectsWarriors = 1
+
 swordWarriors.addEventListener("click", function() {
-  Mordekaizer.objectSword()
-  console.log(Mordekaizer.damage)
+  if (oneSwordWarriors === true && troisObjectsWarriors <= 3) {
+    Mordekaizer.objectSword()
+    Mordekaizer.afficherStatWarriors()
+    console.log(Mordekaizer.damage)
+    oneSwordWarriors = false
+    troisObjectsWarriors ++
+  }
+})
+redPotionWarriors.addEventListener("click", function() {
+  if (oneRedPotionWarriors === true && troisObjectsWarriors <= 3) {
+    Mordekaizer.objectRedPotion()
+    Mordekaizer.afficherStatWarriors()
+    console.log(Mordekaizer.pv)
+    oneRedPotionWarriors = false
+    troisObjectsWarriors ++
+
+  }
 })
 
 scepterWarriors.addEventListener("click", function() {
-  Mordekaizer.objectScepter()
-  console.log(Mordekaizer.damage)
-})
+  if (oneScepterWarriors === true && troisObjectsWarriors <= 3) {
+    Mordekaizer.objectScepter()
+    Mordekaizer.afficherStatWarriors()
+    console.log(Mordekaizer.damage)
+    oneScepterWarriors = false
+    troisObjectsWarriors ++
 
-redPotionWarriors.addEventListener("click", function() {
-  Mordekaizer.objectScepter()
-  console.log(Mordekaizer.damage)
+  }
 })
 
 shieldWarriors.addEventListener("click", function() {
-  Mordekaizer.objectScepter()
-  console.log(Mordekaizer.damage)
+  if (oneShieldWarriors === true && troisObjectsWarriors <= 3) {
+    Mordekaizer.objectShield()
+    Mordekaizer.afficherStatWarriors()
+    console.log(Mordekaizer.armure)
+    oneShieldWarriors = false
+    troisObjectsWarriors ++
+
+  }
 })
 
 bluePotionWarriors.addEventListener("click", function() {
-  Mordekaizer.objectScepter()
-  console.log(Mordekaizer.damage)
+  if (oneBluePotionWarriors === true && troisObjectsWarriors <= 3) {
+    Mordekaizer.objectBluePotion()
+    Mordekaizer.afficherStatWarriors()
+    console.log(Mordekaizer.mana)
+    oneBluePotionWarriors = false
+    troisObjectsWarriors ++
+
+  }
 })
 
 bootsWarriors.addEventListener("click", function() {
-  Mordekaizer.objectScepter()
-  console.log(Mordekaizer.damage)
+  if (oneBootsWarriors === true && troisObjectsWarriors <= 3) {
+    Mordekaizer.objectBoots()
+    Mordekaizer.afficherStatWarriors()
+    console.log(mordekaizer.esquive)
+    oneBootsWarriors = false
+    troisObjectsWarriors ++
+
+  }
 })
 
+//ADDEVENTLISTENER ACTION *************************************************************
+
+let attackMage = document.querySelector(".attack_mage")
+let attackWarriors = document.querySelector(".attack_warriors")
+
+attackMage.addEventListener("click", function() {
+  Syndra.attaquer(Mordekaizer)
+})
+
+attackWarriors.addEventListener("click", function() {
+  Mordekaizer.attaquer(Syndra)
+})
 
 
 

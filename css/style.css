@@ -1,48 +1,51 @@
 /***************POLICE********************************/
+
 @import url('https://fonts.googleapis.com/css?family=Marcellus+SC');
 /****************GENERAL***********************************/
- html,body{
-   margin: 0px;
-   padding: 0px;
-   height: 100%;
-   font-family: 'Marcellus SC', serif;
-   background-color: #EEEEEE;
-}
-li{
-  list-style-type: none;
-  font-size:26px;
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  font-family: 'Marcellus SC', serif;
+  background-color: #EEEEEE;
 }
 
- h1, h2{
-   font-weight: lighter;
- }
+li {
+  list-style-type: none;
+  font-size: 26px;
+}
+
+h1, h2 {
+  font-weight: lighter;
+}
+
 /*******************CONTAINER************************/
 
-.grid{
-  display:flex;
+.grid {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-
 }
 
 /*******************STAT AND ATTCK************************/
 
-.block_stat{
+.block_stat {
   flex-grow: 1;
   border: 2px solid blue;
   margin: 10px;
   text-align: left;
 }
 
-.block_action{
-  display:flex;
+.block_action {
+  display: flex;
   justify-content: space-around;
 }
 
-.attack{
-  width:75px;
-  height:75px;
+.attack_mage, .attack_warriors {
+  width: 75px;
+  height: 75px;
   background-image: url("../images/attack.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -50,9 +53,9 @@ li{
   border: 2px solid green;
 }
 
-.wizard_ability{
-  width:75px;
-  height:75px;
+.ability_mage {
+  width: 75px;
+  height: 75px;
   background-image: url("../images/wizard-ability.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -60,10 +63,9 @@ li{
   border: 2px solid green;
 }
 
-
-.warriors_ability{
-  width:75px;
-  height:75px;
+.ability_warriors {
+  width: 75px;
+  height: 75px;
   background-image: url("../images/warriors-ability.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -72,70 +74,69 @@ li{
 }
 
 /**********************BLOCK GAME ******************************/
-.block_game{
+
+.block_game {
   flex-grow: 1s;
   text-align: center;
   width: 25%;
   margin: 10px;
 }
 
-.wizard_pv{
-  color:red;
+.wizard_pv {
+  color: red;
 }
 
-.warriors_pv{
+.warriors_pv {
   color: blue;
 }
 
-.charactere{
-  text-align:center;
+.charactere {
+  text-align: center;
 }
 
-.img_charactere{
+.img_charactere {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-
 }
 
-.img_wizard{
-  height:510px;
-  width:275px;
+.img_wizard {
+  height: 510px;
+  width: 275px;
   background-image: url("../images/wizard.png");
   margin-left: 80px;
 }
 
-.img_warriors{
-  height:510px;
-  width:400px;
+.img_warriors {
+  height: 510px;
+  width: 400px;
   background-image: url("../images/warriors.png");
   margin-left: 60px;
 }
 
-.block_item_choose>ul{
-  display:flex;
-  justify-content:center;
+.block_item_choose>ul {
+  display: flex;
+  justify-content: center;
 }
 
 .item_game {
-  width:100px;
-  height:100px;
+  width: 100px;
+  height: 100px;
   border: 2px solid blue;
-  margin-right:5px;
+  margin-right: 5px;
 }
 
 /**********************************BLOCK VS *****************************************/
 
-
 .block_vs {
   flex-grow: 0.2;
-  margin:20px;
+  margin: 20px;
   text-align: center;
 }
 
 button {
-  margin-top:10px;
-  padding:30px;
+  margin-top: 10px;
+  padding: 30px;
   background-color: #64b5f6;
   border: 1px solid #64b5f6;
 }
@@ -150,22 +151,21 @@ button {
   margin-top: 10px;
 }
 
-
 /********************BLOCK INVENTARY********************************/
 
-.block_inventary>ul  {
-  display:flex;
-  justify-content:center;
+.block_inventary>ul {
+  display: flex;
+  justify-content: center;
 }
 
-.set_inventary{
-  width:100px;
-  height:100px;
+.set_inventary {
+  width: 100px;
+  height: 100px;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   border: 2px solid blue;
-  margin-right:5px;
+  margin-right: 5px;
 }
 
 .sword {
