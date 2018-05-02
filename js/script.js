@@ -6,32 +6,42 @@ class  Personnage {
     this.nom = nom,
     this.pv = pv,
     this.force = force,
+    this.magie = magie,
     this.damage = damage,
     this.armure = armure,
     this.esquive = esquive,
     this.mana = mana,
     this.ultime= ultime
   }
+  objectSword() {
+    this.damage += this.force
+  }
+  objectScepter() {
+    this.damage += this.magie
+  }
+
 }
 
+// SOUS CLASS MAGE ******************************************************************
 class Mage extends Personnage {
   constructor( nom, pv, force, magie, damage, armure, esquive, mana, ultime ){
-    super(nom, pv, force, damage, armure, esquive, mana, ultime)
+    super(nom, pv, force, magie, damage, armure, esquive, mana, ultime)
   }
   attaquer(cible){
     let degat = this.damage - cible.armure;
     console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
     cible.pv = cible.pv - degat
-    document.querySelector("#pv_guerrier").textContent = Mordekaizer.pv;
+    document.querySelector("#pv_guerrier").textContent = cible.pv;
     // document.querySelector(".img_warriors").style.transitionProperty="opacity"
     // document.querySelector(".img_warriors").style.transitionDuration="4s"
     // document.querySelector(".img_warriors").style.opacity = "0.4"
   }
 }
 
+// SOUS CLASS GUERRIER **************************************************************
 class Guerrier extends Personnage {
   constructor( nom, pv, force, magie, damage, armure, esquive, mana, ultime ){
-    super(nom, pv, force, damage, armure, esquive, mana, ultime)
+    super(nom, pv, force, magie, damage, armure, esquive, mana, ultime)
   }
   attaquer(cible){
     let degat = this.damage - cible.armure;
@@ -41,87 +51,126 @@ class Guerrier extends Personnage {
   }
 }
 
-const Syndra = new Mage("Syndra",1500, 50, 250, 50, 50, 0, 100, 400)
-const Mordekaizer = new Guerrier("Mordekaizer", 1500, 300, 50, 50, 120, 0, 0, 600)
-<<<<<<< HEAD
+// DECLARATION DES HEROS EN VARIABLES QUI CORRESPOND A UNE CLASS MAGE ET GUERRIER ***
+const Syndra = new Mage("Syndra", 1500, 50, 120, 50, 50, 0, 100, 250)
+const Mordekaizer = new Guerrier("Mordekaizer", 1500, 130, 10, 50, 100, 0, 0, 400 )
 
 
-let item1 = document.querySelector("#item1")
-let item2 = document.querySelector("#item2")
-let item3 = document.querySelector("#item3")
-let item4= document.querySelector("#item4")
-let item5 = document.querySelector("#item5")
-let item6 = document.querySelector("#item6")
+// RESET *******************************************************************************
 
-item1.addEventListener("click" function() {
-  document.querySelector("body").style.backgroundColor = "yellow"
-})
-=======
-// RESET ********************************************************************************
-
-var reset = document.getElementById("reset");
+let reset = document.getElementById("reset");
 reset.addEventListener("click", function(){
   location.reload() ;
 })
 
+// INVENTAIRE **************************************************************************
 
-// INVENTAIRE ***************************************************************************
+// Inventaire du mage--------
+let swordMage = document.querySelector("#sword_mage")
+let scepterMage= document.querySelector("#scepter_mage")
+let redPotionMage= document.querySelector("#red-potion_mage")
+let shieldMage= document.querySelector("#shield_mage")
+let bluePotionMage= document.querySelector("#blue-potion_mage")
+let bootsMage= document.querySelector("#boots_mage")
 
-// let item1 = document.querySelector("#item1")
-// let item2 = document.querySelector("#item2")
-// let item3 = document.querySelector("#item3")
-// let item4 = document.querySelector("#item4")
-// let item5 = document.querySelector("#item5")
-// let item6 = document.querySelector("#item6")
 
-let itemGame1 = document.querySelector(".item1")
-let itemGame2 = document.querySelector(".item2")
-let itemGame3 = document.querySelector(".item3")
-//
-// item1.addEventListener("click", function() {
-//   if(itemGame1.ClassName!=="item_game item1 full"){
-//   document.querySelector("body").style.backgroundColor = "yellow"
-//   itemGame1.setAttribute("class","item_game item1 full")
-//   Syndra.attaquer(Mordekaizer);
-//  }
-// })
+//Inventaire du warriors----
+let swordWarriors= document.querySelector("#sword_warriors")
+let scepterWarriors= document.querySelector("#scepter_warriors")
+let redPotionWarriors= document.querySelector("#red-potion_warriors")
+let shieldWarriors= document.querySelector("#shield_warriors")
+let bluePotionWarriors= document.querySelector("#blue-potion_warriors")
+let bootsWarriors= document.querySelector("#boots_warriors")
+
+//ADDEVENTLISTENER OBJECT MAGE**********************************************************
+
+
+// let oneScepterMage = true
+// let oneRedPotionMage = true
+// let oneShieldMage = true
+// let oneBluePotionMage = true
+// let oneBootsMage = true
+
+swordMage.addEventListener("click", function() {
+  Syndra.objectSword()
+  console.log(Syndra.damage)
+})
+
+scepterMage.addEventListener("click", function() {
+  Syndra.objectScepter()
+  console.log(Syndra.damage)
+})
+
+redPotionMage.addEventListener("click", function() {
+  Syndra.objectScepter()
+  console.log(Syndra.damage)
+})
+
+shieldMage.addEventListener("click", function() {
+  Syndra.objectScepter()
+  console.log(Syndra.damage)
+})
+
+bluePotionMage.addEventListener("click", function() {
+  Syndra.objectScepter()
+  console.log(Syndra.damage)
+})
+
+bootsMage.addEventListener("click", function() {
+  Syndra.objectScepter()
+  console.log(Syndra.damage)
+})
+
+//ADDEVENTLISTENER OBEJECT WARRIORS****************************************************
+
+swordWarriors.addEventListener("click", function() {
+  Mordekaizer.objectSword()
+  console.log(Mordekaizer.damage)
+})
+
+scepterWarriors.addEventListener("click", function() {
+  Mordekaizer.objectScepter()
+  console.log(Mordekaizer.damage)
+})
+
+redPotionWarriors.addEventListener("click", function() {
+  Mordekaizer.objectScepter()
+  console.log(Mordekaizer.damage)
+})
+
+shieldWarriors.addEventListener("click", function() {
+  Mordekaizer.objectScepter()
+  console.log(Mordekaizer.damage)
+})
+
+bluePotionWarriors.addEventListener("click", function() {
+  Mordekaizer.objectScepter()
+  console.log(Mordekaizer.damage)
+})
+
+bootsWarriors.addEventListener("click", function() {
+  Mordekaizer.objectScepter()
+  console.log(Mordekaizer.damage)
+})
+
+
 
 
 
 //  const InventaireMage = [
-//   {
-//   id:'sword_mage',
-//   backgroundImage: 'url(../images/sword.png)'
-//   },
-//   {
-//   id:'scepter_mage',
-//   backgroundImage: 'url(../images/scepter.png)'
-//   },
-//   {
-//   id:'red-potion_mage',
-//   backgroundImage: 'url(../images/red-potion.png)'
-//   },
-//   {
-//   id:'shield_mage',
-//   backgroundImage: 'url(../images/shield.png)'
-//   },
-//   {
-//   id:'blue-potion_mage',
-//   backgroundImage: 'url(../images/blue-potion.png)'
-//   },
-//   {
-//   id:'boots_mage',
-//   backgroundImage: 'url(../images/botts.png)'
-//   }
+//   {id:'sword_mage', Mordekaizer.objectSword()},
+//   {id:'scepter_mage'}
+//   {id:'red-potion_mage'},
+//   {id:'shield_mage'},
+//   {id:'blue-potion_mage'},
+//   {id:'boots_mage'}
 // ];
-//
-// //fonction forEach qui fait appelle achaque élément du tableau
-//
+
+//fonction forEach qui fait appelle achaque élément du tableau
+
 // InventaireMage.forEach(function(element){
-//   let button = document.getElementById(element.id);
+//   let press = document.getElementById(element.id);
+//   press.addEventListener("click", function(e){
 //
-//   button.addEventListener("click", function(e){
-//       itemGame1.style.backgroundColor = "element.backgroundImage"
 //   });
-// });
->>>>>>> 1d63938de5285a6431ef351685604e80f6daa3ef
+// }
