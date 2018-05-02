@@ -39,7 +39,7 @@ class Guerrier extends Personnage {
 
 const Syndra = new Mage("Syndra",1500, 50, 250, 50, 50, 0, 100, 400)
 const Mordekaizer = new Guerrier("Mordekaizer", 1500, 300, 50, 50, 120, 0, 0, 600)
-/*
+
 
 let item1 = document.querySelector("#item1")
 let item2 = document.querySelector("#item2")
@@ -50,4 +50,4 @@ let item6 = document.querySelector("#item6")
 
 item1.addEventListener("click" function() {
   document.querySelector("body").style.backgroundColor = "yellow"
-})*/
+})
