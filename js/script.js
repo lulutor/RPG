@@ -267,7 +267,7 @@ bootsWarriors.addEventListener("click", function() {
   if (oneBootsWarriors === true && troisObjectsWarriors <= 3) {
     Mordekaizer.objectBoots()
     Mordekaizer.afficherStatWarriors()
-    console.log(mordekaizer.esquive)
+    console.log(Mordekaizer.esquive)
     oneBootsWarriors = false
     troisObjectsWarriors ++
 
