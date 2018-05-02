@@ -5,8 +5,9 @@
    margin: 0px;
    padding: 0px;
    height: 100%;
-   font-family: 'Marcellus SC', serif;}
-
+   font-family: 'Marcellus SC', serif;
+   background-color: #EEEEEE;
+}
 li{
   list-style-type: none;
   font-size:26px;
@@ -94,7 +95,7 @@ li{
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  
+
 }
 
 .img_wizard{
@@ -143,6 +144,10 @@ button {
 
 .block_stat_action {
   text-align: justify;
+}
+
+.block_stat_action>ul>li {
+  margin-top: 10px;
 }
 
 

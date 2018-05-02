@@ -1,4 +1,4 @@
-"use strict"
+'use strict'
 
 // CLASS PERSONNAGE *****************************************************************
 class  Personnage {
@@ -19,8 +19,20 @@ class  Personnage {
   objectScepter() {
     this.damage += this.magie
   }
-
+  objectRedPotion() {
+    this.pv += 400
+  }
+  objectShield() {
+    this.armure += 50
+  }
+  objectBluePotion(){
+    this.mana =+ 200
+  }
+  objectboots(cible){
+    this.esquive = 0.25
+  }
 }
+
 
 // SOUS CLASS MAGE ******************************************************************
 class Mage extends Personnage {
@@ -29,14 +41,29 @@ class Mage extends Personnage {
   }
   attaquer(cible){
     let degat = this.damage - cible.armure;
-    console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
-    cible.pv = cible.pv - degat
-    document.querySelector("#pv_guerrier").textContent = cible.pv;
-    // document.querySelector(".img_warriors").style.transitionProperty="opacity"
-    // document.querySelector(".img_warriors").style.transitionDuration="4s"
-    // document.querySelector(".img_warriors").style.opacity = "0.4"
+    if(degat<0){
+      degat = 0;
+      console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+    }else if(Math.random()*1<=cible.esquive){
+      console.log(`${cible.nom} à esquivé ${degat} de dégats de ${this.nom}`)
+      document.querySelector(".action_warriors").textContent = "esquive!";
+    }else{
+      console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+      cible.pv = cible.pv - degat
+      document.querySelector("#pv_guerrier").textContent = cible.pv;
+    }
+  }
+  afficherStatMage(){
+    document.querySelector(".force_mage").textContent = ` ${this.force}`
+    document.querySelector(".magie_mage").textContent = ` ${this.magie}`
+    document.querySelector(".degats_mage").textContent = ` ${this.damage}`
+    document.querySelector(".armure_mage").textContent = ` ${this.armure}`
+    document.querySelector(".esquive_mage").textContent = ` ${this.esquive}`
+    document.querySelector(".mana_mage").textContent = ` ${this.mana}`
+    document.querySelector("#pv_mage").textContent = ` ${this.pv}`
   }
 }
+
 
 // SOUS CLASS GUERRIER **************************************************************
 class Guerrier extends Personnage {
@@ -48,6 +75,15 @@ class Guerrier extends Personnage {
     console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
     cible.pv = cible.pv - degat
     document.querySelector("#pv_mage").textContent = Syndra.pv;
+  }
+  afficherStatWarriors() {
+    document.querySelector(".force_warriors").textContent = ` ${this.force}`
+    document.querySelector(".magie_warriors").textContent = ` ${this.magie}`
+    document.querySelector(".damage_warriors").textContent = ` ${this.damage}`
+    document.querySelector(".armure_warriors").textContent = ` ${this.armure}`
+    document.querySelector(".esquive_warriors").textContent = ` ${this.esquive}`
+    document.querySelector(".mana_warriors").textContent = ` ${this.mana}`
+    document.querySelector("#pv_guerrier").textContent = ` ${this.pv}`
   }
 }
 
@@ -84,17 +120,23 @@ let bootsWarriors= document.querySelector("#boots_warriors")
 
 //ADDEVENTLISTENER OBJECT MAGE**********************************************************
 
+var oneSwordMage=true
+var oneScepterMage = true
+var oneRedPotionMage = true
+var oneShieldMage = true
+var oneBluePotionMage = true
+var oneBootsMage = true
 
-// let oneScepterMage = true
-// let oneRedPotionMage = true
-// let oneShieldMage = true
-// let oneBluePotionMage = true
-// let oneBootsMage = true
 
 swordMage.addEventListener("click", function() {
+  if(oneSwordMage===true){
   Syndra.objectSword()
+  Syndra.afficherStatMage()
   console.log(Syndra.damage)
-})
+  oneSwordMage=false
+  }
+ })
+
 
 scepterMage.addEventListener("click", function() {
   Syndra.objectScepter()
