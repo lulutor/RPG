@@ -1,4 +1,5 @@
-'use strict'
+"use strict"
+
 
 // CLASS PERSONNAGE *****************************************************************
 class Personnage {
@@ -14,25 +15,24 @@ class Personnage {
     this.ultime = ultime
   }
   objectSword() {
-    this.damage += this.force
+    this.damage += this.force;
   }
   objectScepter() {
-    this.damage += this.magie
+    this.damage += this.magie;
   }
   objectRedPotion() {
-    this.pv += 400
+    this.pv += 400;
   }
   objectShield() {
-    this.armure += 50
+    this.armure += 50;
   }
   objectBluePotion() {
-    this.mana = +200
+    this.mana += 200;
   }
   objectBoots(cible) {
-    this.esquive = 0.25
+    this.esquive = 0.25;
   }
 }
-
 
 // SOUS CLASS MAGE ******************************************************************
 class Mage extends Personnage {
@@ -44,7 +44,7 @@ class Mage extends Personnage {
     if (degat <= 0) {
       degat = 0;
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
-      setTimeout(document.querySelector(".action_warriors").textContent = `${degat}`,3000);
+      document.querySelector(".action_warriors").textContent = `${degat}`;
     } else if (Math.random() * 1 < cible.esquive) {
       console.log(`${cible.nom} à esquivé ${degat} de dégats de ${this.nom}`)
       document.querySelector(".action_warriors").textContent = "esquive!";
@@ -145,11 +145,9 @@ class Guerrier extends Personnage {
   }
 }
 
-
 // DECLARATION DES HEROS EN VARIABLES QUI CORRESPOND A UNE CLASS MAGE ET GUERRIER ***
 const Syndra = new Mage("Syndra", 1500, 50, 200, 50, 50, 0, 100, 300)
 const Mordekaizer = new Guerrier("Mordekaizer", 1500, 220, 10, 50, 100, 0, 0, 400)
-
 
 // RESET *******************************************************************************
 
@@ -346,6 +344,7 @@ bootsWarriors.addEventListener("click", function() {
 })
 
 //ADDEVENTLISTENER ACTION *************************************************************
+
 let abilityMage = document.querySelector(".ability_mage")
 let attackMage = document.querySelector(".attack_mage")
 let abilityWarriors = document.querySelector(".ability_warriors")
@@ -373,23 +372,3 @@ abilityWarriors.addEventListener("click", function() {
   Mordekaizer.yourDead(Syndra)
   Mordekaizer.yourDead(Mordekaizer)
 })
-
-
-
-//  const InventaireMage = [
-//   {id:'sword_mage', Mordekaizer.objectSword()},
-//   {id:'scepter_mage'}
-//   {id:'red-potion_mage'},
-//   {id:'shield_mage'},
-//   {id:'blue-potion_mage'},
-//   {id:'boots_mage'}
-// ];
-
-//fonction forEach qui fait appelle achaque élément du tableau
-
-// InventaireMage.forEach(function(element){
-//   let press = document.getElementById(element.id);
-//   press.addEventListener("click", function(e){
-//
-//   });
-// }
