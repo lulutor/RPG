@@ -44,7 +44,7 @@ class Mage extends Personnage {
     if (degat <= 0) {
       degat = 0;
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
-      document.querySelector(".action_warriors").textContent = `${degat}`;
+      setTimeout(document.querySelector(".action_warriors").textContent = `${degat}`,3000);
     } else if (Math.random() * 1 < cible.esquive) {
       console.log(`${cible.nom} à esquivé ${degat} de dégats de ${this.nom}`)
       document.querySelector(".action_warriors").textContent = "esquive!";
@@ -123,14 +123,11 @@ class Guerrier extends Personnage {
     if (degat <= 0) {
       degat = 0;
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
-
-    } else if(this.mana<50) {
-      document.querySelector(".action_mage").textContent = `Pas assez de mana`;
     } else {
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
       cible.pv = cible.pv - degat
       document.querySelector(".action_mage").textContent = `-${degat}`;
-      document.querySelector("#pv_guerrier").textContent = cible.pv;
+      document.querySelector("#pv_mage").textContent = cible.pv;
     }
     this.pv = this.pv/2
   }
@@ -190,6 +187,8 @@ swordMage.addEventListener("click", function() {
     Syndra.afficherStatMage()
     console.log(Syndra.damage)
     oneSwordMage = false
+    swordMage.style.backgroundColor = "#FFA726";
+    document.querySelector(".degats_mage").style.color = "blue"
     troisObjectsMage ++
   }
 })
@@ -201,6 +200,8 @@ scepterMage.addEventListener("click", function() {
     Syndra.afficherStatMage()
     console.log(Syndra.damage)
     oneScepterMage = false
+    scepterMage.style.backgroundColor = "#FFA726";
+    document.querySelector(".degats_mage").style.color = "blue"
     troisObjectsMage ++
   }
 })
@@ -211,6 +212,7 @@ redPotionMage.addEventListener("click", function() {
     Syndra.afficherStatMage()
     console.log(Syndra.pv)
     oneRedPotionMage = false
+    redPotionMage.style.backgroundColor = "#FFA726";
     troisObjectsMage ++
   }
 })
@@ -221,6 +223,8 @@ shieldMage.addEventListener("click", function() {
     Syndra.afficherStatMage()
     console.log(Syndra.armure)
     oneShieldMage = false
+    shieldMage.style.backgroundColor = "#FFA726";
+    document.querySelector(".armure_mage").style.color = "blue"
     troisObjectsMage ++
   }
 })
@@ -231,6 +235,8 @@ bluePotionMage.addEventListener("click", function() {
     Syndra.afficherStatMage()
     console.log(Syndra.mana)
     oneBluePotionMage = false
+    bluePotionMage.style.backgroundColor = "#FFA726";
+    document.querySelector(".mana_mage").style.color = "blue"
     troisObjectsMage ++
   }
 })
@@ -241,6 +247,8 @@ bootsMage.addEventListener("click", function() {
     Syndra.afficherStatMage()
     console.log(Syndra.esquive)
     oneBootsMage = false
+    bootsMage.style.backgroundColor = "#FFA726";
+    document.querySelector(".esquive_mage").style.color = "blue"
     troisObjectsMage ++
   }
 })
@@ -261,6 +269,8 @@ swordWarriors.addEventListener("click", function() {
     Mordekaizer.afficherStatWarriors()
     console.log(Mordekaizer.damage)
     oneSwordWarriors = false
+    swordWarriors.style.backgroundColor = "#FFA726";
+    document.querySelector(".degats_guerrier").style.color = "blue"
     troisObjectsWarriors ++
   }
 })
@@ -270,6 +280,7 @@ redPotionWarriors.addEventListener("click", function() {
     Mordekaizer.afficherStatWarriors()
     console.log(Mordekaizer.pv)
     oneRedPotionWarriors = false
+    redPotionWarriors.style.backgroundColor = "#FFA726";
     troisObjectsWarriors ++
 
   }
@@ -281,6 +292,8 @@ scepterWarriors.addEventListener("click", function() {
     Mordekaizer.afficherStatWarriors()
     console.log(Mordekaizer.damage)
     oneScepterWarriors = false
+    scepterWarriors.style.backgroundColor = "#FFA726";
+    document.querySelector(".degats_guerrier").style.color = "blue"
     troisObjectsWarriors ++
 
   }
@@ -292,6 +305,8 @@ shieldWarriors.addEventListener("click", function() {
     Mordekaizer.afficherStatWarriors()
     console.log(Mordekaizer.armure)
     oneShieldWarriors = false
+    shieldWarriors.style.backgroundColor = "#FFA726";
+    document.querySelector(".armure_guerrier").style.color = "blue"
     troisObjectsWarriors ++
 
   }
@@ -303,6 +318,8 @@ bluePotionWarriors.addEventListener("click", function() {
     Mordekaizer.afficherStatWarriors()
     console.log(Mordekaizer.mana)
     oneBluePotionWarriors = false
+    bluePotionWarriors.style.backgroundColor = "#FFA726";
+    document.querySelector(".mana_guerrier").style.color = "blue"
     troisObjectsWarriors ++
 
   }
@@ -314,6 +331,8 @@ bootsWarriors.addEventListener("click", function() {
     Mordekaizer.afficherStatWarriors()
     console.log(Mordekaizer.esquive)
     oneBootsWarriors = false
+    bootsWarriors.style.backgroundColor = "#FFA726";
+    document.querySelector(".esquive_guerrier").style.color = "blue"
     troisObjectsWarriors ++
 
   }
@@ -345,7 +364,7 @@ abilityWarriors.addEventListener("click", function() {
   Mordekaizer.abilityWarriors(Syndra)
   Mordekaizer.afficherStatWarriors()
   Mordekaizer.yourDead(Syndra)
-
+  Mordekaizer.yourDead(Mordekaizer)
 })
 
 

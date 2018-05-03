@@ -16,8 +16,9 @@ li {
   font-size: 26px;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-weight: lighter;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 /*******************CONTAINER************************/
@@ -29,7 +30,7 @@ h1, h2 {
   height: 100%;
 }
 
-/*******************STAT AND ATTCK************************/
+/*******************STAT AND ATTACK************************/
 
 .block_stat {
   flex-grow: 1;
@@ -53,6 +54,22 @@ h1, h2 {
   border: 2px solid green;
 }
 
+.attack_mage{
+  box-shadow: 0 14px 28px rgba(66, 165, 245, 0.25), 0 10px 10px rgba(66, 165, 245, 0.22);
+}
+
+.attack_mage:hover{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.attack_warriors{
+  box-shadow: 0 14px 28px rgba(239, 83, 80, 0.25), 0 10px 10px rgba(239, 83, 80,0.22);
+}
+
+.attack_warriors:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
 .ability_mage {
   width: 75px;
   height: 75px;
@@ -61,6 +78,16 @@ h1, h2 {
   background-repeat: no-repeat;
   margin: 5px;
   border: 2px solid green;
+  box-shadow: 0 14px 28px rgba(66, 165, 245, 0.25), 0 10px 10px rgba(66, 165, 245, 0.22);
+}
+
+.ability_mage:hover {
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+
+.ability_warriors {
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .ability_warriors {
@@ -71,6 +98,7 @@ h1, h2 {
   background-repeat: no-repeat;
   margin: 5px;
   border: 2px solid green;
+  box-shadow: 0 14px 28px rgba(239, 83, 80, 0.25), 0 10px 10px rgba(239, 83, 80,0.22)
 }
 
 /**********************BLOCK GAME ******************************/
@@ -84,11 +112,11 @@ h1, h2 {
 }
 
 .wizard_pv {
-  color: red;
+  color: blue;
 }
 
 .warriors_pv {
-  color: blue;
+  color:red;
 }
 
 .charactere {
@@ -113,6 +141,7 @@ h1, h2 {
   width: 400px;
   background-image: url("../images/warriors.png");
   margin-left: 60px;
+
 }
 
 .block_item_choose>ul {
@@ -140,7 +169,10 @@ button {
   padding: 30px;
   background-color: #64b5f6;
   border: 1px solid #64b5f6;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 15px;
 }
+
 
 /*********************BLOCK STAT*******************************************************/
 
@@ -165,8 +197,20 @@ button {
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  border: 2px solid blue;
+  border: 1px solid black;
   margin-right: 5px;
+}
+
+.set_inventary:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.inventary_warriors {
+  box-shadow: 0 14px 28px rgba(239, 83, 80, 0.25), 0 10px 10px rgba(239, 83, 80,0.22);
+}
+
+.inventary_mage {
+  box-shadow: 0 14px 28px rgba(66, 165, 245, 0.25), 0 10px 10px rgba(66, 165, 245, 0.22);
 }
 
 .sword {
