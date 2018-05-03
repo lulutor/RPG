@@ -41,9 +41,10 @@ class Mage extends Personnage {
   }
   attaquer(cible) {
     let degat = this.damage - cible.armure;
-    if (degat < 0) {
+    if (degat <= 0) {
       degat = 0;
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+      document.querySelector(".action_warriors").textContent = `${degat}`;
     } else if (Math.random() * 1 < cible.esquive) {
       console.log(`${cible.nom} à esquivé ${degat} de dégats de ${this.nom}`)
       document.querySelector(".action_warriors").textContent = "esquive!";
@@ -63,6 +64,27 @@ class Mage extends Personnage {
     document.querySelector(".mana_mage").textContent = ` ${this.mana}`
     document.querySelector("#pv_mage").textContent = ` ${this.pv}`
   }
+  abilityMage(cible) {
+    let degat = this.ultime - cible.armure;
+    if (degat <= 0) {
+      degat = 0;
+      console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+      document.querySelector(".action_mage").textContent = `${degat}`;
+    } else if(this.mana<50) {
+      document.querySelector(".action_mage").textContent = `Pas assez de mana`;
+    } else {
+      console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+      cible.pv = cible.pv - degat
+      document.querySelector(".action_warriors").textContent = `-${degat}`;
+      document.querySelector("#pv_guerrier").textContent = cible.pv;
+    }
+    this.mana -= 50
+  }
+  yourDead(cible) {
+    if(cible.pv<=0) {
+      document.querySelector(".action_warriors").textContent = `You are DEAD noob !`;
+    }
+  }
 }
 
 
@@ -73,9 +95,10 @@ class Guerrier extends Personnage {
   }
   attaquer(cible) {
     let degat = this.damage - cible.armure;
-    if (degat < 0) {
+    if (degat <= 0) {
       degat = 0;
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+      document.querySelector(".action_mage").textContent = `${degat}`;
     } else if (Math.random() * 1 <= cible.esquive) {
       console.log(`${cible.nom} à esquivé ${degat} de dégats de ${this.nom}`)
       document.querySelector(".action_mage").textContent = "esquive!";
@@ -95,7 +118,29 @@ class Guerrier extends Personnage {
     document.querySelector(".mana_guerrier").textContent = ` ${this.mana}`
     document.querySelector("#pv_guerrier").textContent = ` ${this.pv}`
   }
+  abilityWarriors(cible) {
+    let degat = this.ultime - cible.armure;
+    if (degat <= 0) {
+      degat = 0;
+      console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+
+    } else if(this.mana<50) {
+      document.querySelector(".action_mage").textContent = `Pas assez de mana`;
+    } else {
+      console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
+      cible.pv = cible.pv - degat
+      document.querySelector(".action_mage").textContent = `-${degat}`;
+      document.querySelector("#pv_guerrier").textContent = cible.pv;
+    }
+    this.pv = this.pv/2
+  }
+  yourDead(cible) {
+    if(cible.pv<=0) {
+      document.querySelector(".action_mage").textContent = `You are DEAD noob !`;
+    }
+  }
 }
+
 
 // DECLARATION DES HEROS EN VARIABLES QUI CORRESPOND A UNE CLASS MAGE ET GUERRIER ***
 const Syndra = new Mage("Syndra", 1500, 50, 120, 50, 50, 0, 100, 250)
@@ -275,18 +320,33 @@ bootsWarriors.addEventListener("click", function() {
 })
 
 //ADDEVENTLISTENER ACTION *************************************************************
-
+let abilityMage = document.querySelector(".ability_mage")
 let attackMage = document.querySelector(".attack_mage")
+let abilityWarriors = document.querySelector(".ability_warriors")
 let attackWarriors = document.querySelector(".attack_warriors")
 
 attackMage.addEventListener("click", function() {
   Syndra.attaquer(Mordekaizer)
+  Syndra.yourDead(Mordekaizer)
+})
+
+abilityMage.addEventListener("click", function() {
+  Syndra.abilityMage(Mordekaizer)
+  Syndra.afficherStatMage()
+  Syndra.yourDead(Mordekaizer)
 })
 
 attackWarriors.addEventListener("click", function() {
   Mordekaizer.attaquer(Syndra)
+  Mordekaizer.yourDead(Syndra)
 })
 
+abilityWarriors.addEventListener("click", function() {
+  Mordekaizer.abilityWarriors(Syndra)
+  Mordekaizer.afficherStatWarriors()
+  Mordekaizer.yourDead(Syndra)
+
+})
 
 
 
