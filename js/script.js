@@ -70,6 +70,7 @@ class Mage extends Personnage {
       degat = 0;
       console.log(`${this.nom} à infligé ${degat} de dégats à ${cible.nom}`)
       document.querySelector(".action_mage").textContent = `${degat}`;
+      this.mana -= 50
     } else if(this.mana<50) {
       document.querySelector(".action_mage").textContent = `Pas assez de mana`;
     } else {
@@ -77,12 +78,15 @@ class Mage extends Personnage {
       cible.pv = cible.pv - degat
       document.querySelector(".action_warriors").textContent = `-${degat}`;
       document.querySelector("#pv_guerrier").textContent = cible.pv;
+      this.mana -= 50
     }
-    this.mana -= 50
   }
   yourDead(cible) {
     if(cible.pv<=0) {
-      document.querySelector(".action_warriors").textContent = `You are DEAD noob !`;
+      document.querySelector(".action_mage").textContent = `GG`;
+      document.querySelector(".action_warriors").textContent = `GAME OVER`;
+      cible.pv = 0
+      document.querySelector("#pv_guerrier").textContent = cible.pv;
     }
   }
 }
@@ -129,19 +133,22 @@ class Guerrier extends Personnage {
       document.querySelector(".action_mage").textContent = `-${degat}`;
       document.querySelector("#pv_mage").textContent = cible.pv;
     }
-    this.pv = this.pv/2
+    this.pv = Math.floor(this.pv/2)
   }
   yourDead(cible) {
     if(cible.pv<=0) {
-      document.querySelector(".action_mage").textContent = `You are DEAD noob !`;
+      document.querySelector(".action_warriors").textContent = `GG`;
+      document.querySelector(".action_mage").textContent = `GAME OVER`;
+      cible.pv = 0
+      document.querySelector("#pv_mage").textContent = cible.pv;
     }
   }
 }
 
 
 // DECLARATION DES HEROS EN VARIABLES QUI CORRESPOND A UNE CLASS MAGE ET GUERRIER ***
-const Syndra = new Mage("Syndra", 1500, 50, 120, 50, 50, 0, 100, 250)
-const Mordekaizer = new Guerrier("Mordekaizer", 1500, 130, 10, 50, 100, 0, 0, 400)
+const Syndra = new Mage("Syndra", 1500, 50, 200, 50, 50, 0, 100, 300)
+const Mordekaizer = new Guerrier("Mordekaizer", 1500, 220, 10, 50, 100, 0, 0, 400)
 
 
 // RESET *******************************************************************************
@@ -270,7 +277,7 @@ swordWarriors.addEventListener("click", function() {
     console.log(Mordekaizer.damage)
     oneSwordWarriors = false
     swordWarriors.style.backgroundColor = "#FFA726";
-    document.querySelector(".degats_guerrier").style.color = "blue"
+    document.querySelector(".degats_guerrier").style.color = "red"
     troisObjectsWarriors ++
   }
 })
@@ -293,7 +300,7 @@ scepterWarriors.addEventListener("click", function() {
     console.log(Mordekaizer.damage)
     oneScepterWarriors = false
     scepterWarriors.style.backgroundColor = "#FFA726";
-    document.querySelector(".degats_guerrier").style.color = "blue"
+    document.querySelector(".degats_guerrier").style.color = "red"
     troisObjectsWarriors ++
 
   }
@@ -306,7 +313,7 @@ shieldWarriors.addEventListener("click", function() {
     console.log(Mordekaizer.armure)
     oneShieldWarriors = false
     shieldWarriors.style.backgroundColor = "#FFA726";
-    document.querySelector(".armure_guerrier").style.color = "blue"
+    document.querySelector(".armure_guerrier").style.color = "red"
     troisObjectsWarriors ++
 
   }
@@ -319,7 +326,7 @@ bluePotionWarriors.addEventListener("click", function() {
     console.log(Mordekaizer.mana)
     oneBluePotionWarriors = false
     bluePotionWarriors.style.backgroundColor = "#FFA726";
-    document.querySelector(".mana_guerrier").style.color = "blue"
+    document.querySelector(".mana_guerrier").style.color = "red"
     troisObjectsWarriors ++
 
   }
@@ -332,7 +339,7 @@ bootsWarriors.addEventListener("click", function() {
     console.log(Mordekaizer.esquive)
     oneBootsWarriors = false
     bootsWarriors.style.backgroundColor = "#FFA726";
-    document.querySelector(".esquive_guerrier").style.color = "blue"
+    document.querySelector(".esquive_guerrier").style.color = "red"
     troisObjectsWarriors ++
 
   }
