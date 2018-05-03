@@ -350,6 +350,7 @@ let attackMage = document.querySelector(".attack_mage")
 let abilityWarriors = document.querySelector(".ability_warriors")
 let attackWarriors = document.querySelector(".attack_warriors")
 
+
 attackMage.addEventListener("click", function() {
   Syndra.attaquer(Mordekaizer)
   Syndra.yourDead(Mordekaizer)
