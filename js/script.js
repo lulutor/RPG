@@ -384,7 +384,7 @@ document.addEventListener('keypress', (event) => {
   if (event.key === "c") {
     var code = prompt('Entrer un code');
     if (code === "vincent") {
-      document.querySelector(".img_warriors").style.backgroundImage = "url('../images/strongman.png')"
+      document.querySelector(".img_warriors").style.backgroundImage = "url('../images/strongman2.jpeg')"
       document.querySelector("#strongman").textContent = "Strongman"
       Mordekaizer.moustache()
       Mordekaizer.afficherStatWarriors()
