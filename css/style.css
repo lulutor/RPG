@@ -58,7 +58,7 @@ h4 {
   background-size: contain;
   background-repeat: no-repeat;
   margin: 5px;
-  border: 2px solid green;
+  border: 1px solid #FFA726;
   cursor: pointer;
 }
 
@@ -85,7 +85,7 @@ h4 {
   background-size: contain;
   background-repeat: no-repeat;
   margin: 5px;
-  border: 2px solid green;
+  border: 1px solid #FFA726;
   box-shadow: 0 14px 28px rgba(66, 165, 245, 0.25), 0 10px 10px rgba(66, 165, 245, 0.22);
   cursor: pointer;
 }
@@ -105,7 +105,7 @@ h4 {
   background-size: contain;
   background-repeat: no-repeat;
   margin: 5px;
-  border: 2px solid green;
+  border: 1px solid #FFA726;
   box-shadow: 0 14px 28px rgba(239, 83, 80, 0.25), 0 10px 10px rgba(239, 83, 80, 0.22);
   cursor: pointer;
 }
