@@ -1,6 +1,5 @@
 "use strict"
 
-
 // CLASS PERSONNAGE *****************************************************************
 class Personnage {
   constructor(nom, pv, force, magie, damage, armure, esquive, mana, ultime) {
@@ -30,7 +29,17 @@ class Personnage {
     this.mana += 200;
   }
   objectBoots(cible) {
-    this.esquive = 0.25;
+    this.esquive += 0.25;
+  }
+  moustache() {
+    this.pv = 9000,
+    this.force = 900,
+    this.magie = 900,
+    this.damage = 900,
+    this.armure = 0,
+    this.esquive = 0.50,
+    this.mana = 0,
+    this.ultime = 900
   }
 }
 
@@ -287,7 +296,6 @@ redPotionWarriors.addEventListener("click", function() {
     oneRedPotionWarriors = false
     redPotionWarriors.style.backgroundColor = "#FFA726";
     troisObjectsWarriors ++
-
   }
 })
 
@@ -300,7 +308,6 @@ scepterWarriors.addEventListener("click", function() {
     scepterWarriors.style.backgroundColor = "#FFA726";
     document.querySelector(".degats_guerrier").style.color = "red"
     troisObjectsWarriors ++
-
   }
 })
 
@@ -313,7 +320,6 @@ shieldWarriors.addEventListener("click", function() {
     shieldWarriors.style.backgroundColor = "#FFA726";
     document.querySelector(".armure_guerrier").style.color = "red"
     troisObjectsWarriors ++
-
   }
 })
 
@@ -326,7 +332,6 @@ bluePotionWarriors.addEventListener("click", function() {
     bluePotionWarriors.style.backgroundColor = "#FFA726";
     document.querySelector(".mana_guerrier").style.color = "red"
     troisObjectsWarriors ++
-
   }
 })
 
@@ -339,7 +344,6 @@ bootsWarriors.addEventListener("click", function() {
     bootsWarriors.style.backgroundColor = "#FFA726";
     document.querySelector(".esquive_guerrier").style.color = "red"
     troisObjectsWarriors ++
-
   }
 })
 
@@ -373,3 +377,17 @@ abilityWarriors.addEventListener("click", function() {
   Mordekaizer.yourDead(Syndra)
   Mordekaizer.yourDead(Mordekaizer)
 })
+
+// PERSO CACHé *************************************************************************
+
+document.addEventListener('keypress', (event) => {
+  if(event.key === "c"){
+  var code = prompt('Entrer un code');
+    if(code==="vincent"){
+      document.querySelector(".img_warriors").style.backgroundImage="url('../images/strongman.jpg')"
+      document.querySelector("#strongman").textContent = "Strongman"
+      Mordekaizer.moustache()
+      Mordekaizer.afficherStatWarriors()
+    }
+  }
+});
