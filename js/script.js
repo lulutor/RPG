@@ -26,7 +26,7 @@ class Personnage {
     this.armure += 50;
   }
   objectBluePotion() {
-    this.mana += 200;
+    this.mana += 100;
   }
   objectBoots(cible) {
     this.esquive += 0.25;
